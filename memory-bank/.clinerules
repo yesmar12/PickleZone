@@ -1,0 +1,43 @@
+# PickleZone Project Rules
+
+## Project Structure
+- Routes are organized in the `routes/` directory
+- Components are split between `components/` (static) and `islands/` (interactive)
+- Utility functions are in the `utils/` directory
+- Authentication is handled via Auth0 OAuth
+
+## Data Models
+- Game: Represents a pickleball game commitment
+  - id: Unique identifier
+  - time: ISO format date/time
+  - players: Array of player names/IDs
+  - court: Court identifier
+  - maxPlayers: Maximum number of players allowed
+
+- Court: Represents a pickleball court
+  - id: Unique identifier
+  - name: Display name
+
+## Styling Patterns
+- Primary color: Green (for pickleball theme)
+- Use Tailwind CSS utility classes
+- Consistent card-based UI for game listings
+- Responsive design for mobile use
+
+## Authentication
+- Auth0 OAuth integration
+- Protected routes require authentication
+- User state is passed via middleware to components
+- Authentication state is stored in context.state
+
+## API Patterns
+- RESTful endpoints for data operations
+- JSON request/response format
+- Standard HTTP status codes
+- Centralized error handling
+
+## Development Workflow
+- Use `deno task start` to run the development server
+- Test authentication with Auth0 credentials
+- Verify changes in the browser
+- Update Memory Bank documentation when making significant changes
