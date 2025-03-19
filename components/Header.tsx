@@ -1,9 +1,10 @@
 interface HeaderProps {
   isAuthenticated: boolean;
-  userEmail?: string;
+  userName?: string;
 }
 
-export default function Header({ isAuthenticated, userEmail }: HeaderProps) {
+export default function Header({ isAuthenticated, userName }: HeaderProps) {
+  
   return (
     <header class="bg-white border-b">
       <div class="max-w-screen-lg mx-auto px-4 py-3 flex justify-between items-center">
@@ -19,7 +20,7 @@ export default function Header({ isAuthenticated, userEmail }: HeaderProps) {
         <div class="flex items-center gap-4">
           {isAuthenticated ? (
             <div class="flex items-center gap-4">
-              <span class="text-gray-600">{userEmail}</span>
+              <span class="text-gray-600">{userName}</span>
               <a
                 href="/logout"
                 class="text-gray-600 hover:text-gray-800 transition-colors"

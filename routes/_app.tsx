@@ -2,21 +2,11 @@
 import { type PageProps } from "$fresh/server.ts";
 import Header from "../components/Header.tsx";
 
-interface State {
-  isAuthenticated: boolean;
-  userEmail?: string;
 }
 
-interface AppProps extends PageProps {
-  state: {
-    isAuthenticated?: boolean;
-    userEmail?: string;
-  };
-}
-
-export default function App({ Component, data, state }: AppProps) {
-  const isAuthenticated = state?.isAuthenticated || false;
-  const userEmail = state?.userEmail;
+export default function App({ Component, data, state }: PageProps) {
+  const isAuthenticated = (state?.isAuthenticated || false) as boolean;
+  const user = state.session.get("user");
 
   return (
     <html>
@@ -28,7 +18,7 @@ export default function App({ Component, data, state }: AppProps) {
       </head>
       <body>
         <div class="min-h-screen bg-gray-50">
-          <Header isAuthenticated={isAuthenticated} userEmail={userEmail} />
+          <Header isAuthenticated={isAuthenticated} userName={user?.name} />
           <main>
             <Component />
           </main>
